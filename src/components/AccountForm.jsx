@@ -1,22 +1,26 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react'
+import { AccountConsumer } from '../providers/AccountProvider'
 
-export default class AccountForm extends React.Component {
+class AccountForm extends React.Component {
   state = { 
-    username: '', 
-    firstName: '', 
-    lastName: '', 
-    avatar: '' ,
-    email: ''}
+    username: this.props.username, 
+    firstName: this.props.firstName, 
+    lastName: this.props.lastName, 
+    avatar: this.props.avatar ,
+    email: this.props.email
+  };
 
-
-  handleChange = (e, { name, value }) => this.ListeningStateChangedEvent({ [name]: value,})
+  handleChange = (e, { name, value }) => 
+  this.setState({ [name]: value,});
     
   
 
   handleSubmit = (e) => {
       e.preventDefault()
-  }
+      const account = {...this.state,};
+      this.props.updateAccount(account)
+  };
 
   render() {
     const { username, firstName, lastName, avatar, email } = this.state;
@@ -64,4 +68,24 @@ export default class AccountForm extends React.Component {
     )
   }
 }
-  
+
+const ConnectedAccountForm = (props) => {
+  return(
+    <AccountConsumer>
+      { value => (
+        <AccountForm 
+          {...props}
+          username={value.username}
+          firstName={value.firstName}
+          lastName={value.lastName}
+          avatar={value.avatar}
+          email={value.email}
+          updateAccount={value.updateAccount}
+        />
+      )}
+    </AccountConsumer>
+
+  )
+};
+
+export default ConnectedAccountForm

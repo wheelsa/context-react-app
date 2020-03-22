@@ -1,6 +1,6 @@
 import React from 'react'
 import AccountCard from '../components/AccountCard'
-import AccountForm from '../components/AccountForm'
+import ConnectedAccountForm from '../components/AccountForm'
 
 const AccountProfile = () => (
   <>
@@ -8,7 +8,7 @@ const AccountProfile = () => (
     <AccountCard />
     <hr></hr>
     <h2>Update Your Account Info</h2>
-    <AccountForm />
+    <ConnectedAccountForm />
   </>
 
 )

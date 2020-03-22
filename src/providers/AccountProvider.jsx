@@ -11,7 +11,12 @@ export default class AccountProvider extends React.Component {
     firstName: 'Seth',
     lastName: 'W',
     email: 'sw@mail.com',
-    avatar: 'https://api.adorable.io/avatars/285/abott@adorable.png' 
+    avatar: 'https://api.adorable.io/avatars/285/abott@adorable.png', 
+    updateAccount: (account) => this.updateAccount(account)
+}
+
+  updateAccount = (account) => {
+    this.setState({...account, })
   }
 
   render(){
