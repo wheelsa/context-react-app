@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AccountContext = React.createContext();
+export const AccountContext = React.createContext();
 
 export const AccountConsumer = AccountContext.Consumer;
 
